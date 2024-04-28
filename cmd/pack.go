@@ -20,6 +20,7 @@ var packCmd = &cobra.Command{
   example: envy pack my-cool-project. this will pack your env into a project called "my-cool-project".
   you can also specify a project name along with a filename.
   Note: This will attempt to remove the .env file from the path specified and will throw an error if it doesn't succeed.
+  However, it will replace it with an empty .env-dist file containing all the keys from the original file.
   If no filename is provided, envy will look for a .env file present in the current directory.
   If none found, The program will quit with an error.`,
 	Args: cobra.MaximumNArgs(1),

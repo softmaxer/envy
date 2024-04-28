@@ -9,10 +9,9 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "envy",
 	Short: "An environment variable manager for your git repositories",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-Envy is a simple CLI tool to manage your .env files in your git repos.
-It uses an AES encryption to store all your .env files in a vault.
+	Long: `Envy is a simple CLI tool to manage your .env files in your git repos.
+It uses an AES encryption to store all your .env files in a vault. It also creates
+a temporary .env-dist file as a substitute
 With a simple command, they're always at your disposal to either pack / unpack them
 into your current projects.
 `,

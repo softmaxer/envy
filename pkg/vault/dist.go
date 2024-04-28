@@ -29,14 +29,11 @@ func createEnvDist(envFile io.Reader) {
 	}
 	defer envDist.Close()
 	lines, err := readLines(envFile)
-	fmt.Printf("Lines: %+v\n", lines)
 	if err != nil {
 		log.Fatal(styles.ErrorText().Render("Error reading lines from env: ", err.Error()))
 	}
 	for _, line := range lines {
-		fmt.Printf("Line: %s\n", line)
 		vars := strings.Split(line, "=")
-		fmt.Printf("Found: %+v\n", vars)
 		if len(vars) < 2 {
 			continue
 		}

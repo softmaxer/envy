@@ -4,24 +4,26 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+
+	"github.com/softmaxer/envy/pkg/styles"
 )
 
 func createSecretAndPacks(root string) {
 	err := os.MkdirAll(root, os.ModePerm)
 	if err != nil {
-		log.Fatalf("Couldn't create directory: %s\n", err.Error())
+		log.Fatal(styles.ErrorText().Render("Couldn't create directory: ", err.Error()))
 	}
 
 	secretFile := filepath.Join(root, secretsFileName)
 	_, err = os.Create(secretFile)
 	if err != nil {
-		log.Fatalf("Error creating a secret file: %s\n", err.Error())
+		log.Fatal(styles.ErrorText().Render("Error creating a secret file: ", err.Error()))
 	}
 
 	packsFile := filepath.Join(root, "packs")
 	err = os.MkdirAll(packsFile, os.ModePerm)
 	if err != nil {
-		log.Fatalf("Error creating packs: %s\n", err.Error())
+		log.Fatal(styles.ErrorText().Render("Error creating packs: ", err.Error()))
 	}
 }
 
@@ -32,7 +34,7 @@ func writeSecret(root string, secret string) {
 		0644,
 	)
 	if err != nil {
-		log.Fatalf("Error opening secrets: %s\n", err.Error())
+		log.Fatal(styles.ErrorText().Render("Error opening secrets: ", err.Error()))
 	}
 	defer fD.Close()
 
@@ -42,9 +44,17 @@ func writeSecret(root string, secret string) {
 func GetProjectName() string {
 	pwd, err := os.Getwd()
 	if err != nil {
-		log.Fatalf("Cannot stat: %s\n", err.Error())
+		log.Fatal(styles.ErrorText().Render("Cannot stat: ", err.Error()))
 	}
-	absPath := filepath.Dir(pwd)
-	dir := filepath.Base(absPath)
+	dir := filepath.Base(pwd)
 	return dir
+}
+
+func WriteDecodedPack(decodedBytes []byte) {
+	env, err := os.Create(".env")
+	if err != nil {
+		log.Fatal(styles.ErrorText().Render("Error creating a new .env file: ", err.Error()))
+	}
+	defer env.Close()
+	env.WriteString(string(decodedBytes))
 }

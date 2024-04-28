@@ -10,6 +10,7 @@ import (
 
 	"github.com/spf13/cobra"
 
+	"github.com/softmaxer/envy/pkg/styles"
 	"github.com/softmaxer/envy/pkg/vault"
 )
 
@@ -32,7 +33,7 @@ To use another path other than the home
 			homeDir, err := os.UserHomeDir()
 			vaultDir := filepath.Join(homeDir, ".envy")
 			if err != nil {
-				log.Fatal(err.Error())
+				log.Fatal(styles.ErrorText().Render(err.Error()))
 			}
 			vault.NewVault(vaultDir)
 		}

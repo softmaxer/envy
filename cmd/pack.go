@@ -14,6 +14,7 @@ var packCmd = &cobra.Command{
   envy pack OR envy pack -f <filename>.
   If no filename is provided, envy will look for a .env file present in the current directory.
   If none found, it'll quit gracefully.`,
+	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("pack called")
 		filePath, err := cmd.Flags().GetString("file")
@@ -21,6 +22,7 @@ var packCmd = &cobra.Command{
 			log.Printf("Error: %s\n", err.Error())
 		}
 		fmt.Printf("Found file path: %s\n", filePath)
+		fmt.Println(args)
 	},
 }
 

@@ -16,12 +16,26 @@ Envy uses an AES encryption to store your environment variables in a `.pack` fil
 
 ## Installation
 
+### Official releases
 Head on over to the `Releases` page to pickout the release that best fits your requirements and add it to your computer's `bin` (`/usr/bin` or `/usr/local/bin`)
 
+### Curl
+```sh
+curl -L https://github.com/softmaxer/envy/releases/download/v0.1.6/envy_Darwin_arm64.tar.gz > envy.tar.gz
+tar -xzvf envy.tar.gz
+```
+
+Once installed, Either add the path to the `$PATH` variable or move it to `bin` (might require sudo):
+```sh
+mv envy /usr/local/bin/envy
+```
+
+### Using go
 Or, you can also install it with go:
 ```sh
 go install github.com/softmaxer/envy
 ```
+
 
 ## Usage
 - Start a new envy vault by typing

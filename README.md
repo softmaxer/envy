@@ -17,7 +17,7 @@ Envy uses an AES encryption to store your environment variables in a `.pack` fil
 ## Installation
 
 ### Official releases
-Head on over to the `Releases` page to pickout the release that best fits your requirements and add it to your computer's `bin` (`/usr/bin` or `/usr/local/bin`)
+Head on over to the [Releases](https://github.com/softmaxer/envy/releases) page to pickout the release that best fits your requirements and add it to your computer's `bin` (`/usr/bin` or `/usr/local/bin`)
 
 ### Curl
 ```sh

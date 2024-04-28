@@ -1,6 +1,7 @@
 package vault
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"log"
@@ -11,6 +12,8 @@ import (
 )
 
 func Pack(project string, envFile io.Reader) {
+	var envFilebuffer bytes.Buffer
+	tee := io.TeeReader(envFile, &envFilebuffer)
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		log.Fatal(styles.ErrorText().Render("Cannot access home folder: ", err.Error()))
@@ -28,10 +31,11 @@ func Pack(project string, envFile io.Reader) {
 		log.Fatal(styles.ErrorText().Render("Error creating secret key: ", err.Error()))
 	}
 	defer keyFD.Close()
-	hash, err := encrypt(keyFD, envFile)
+	hash, err := encrypt(keyFD, tee)
 	if err != nil {
 		log.Fatal(styles.ErrorText().Render("Error encoding the file: ", err.Error()))
 	}
 	packFD.Write(hash)
 	log.Print(styles.SuccessText().Render("Successfully packed ", project))
+	createEnvDist(&envFilebuffer)
 }

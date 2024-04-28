@@ -36,6 +36,8 @@ var packCmd = &cobra.Command{
 		if err != nil {
 			log.Fatal(styles.ErrorText().Render("Error opening env: ", err.Error()))
 		}
+
+		defer envFD.Close()
 		vault.Pack(projectName, envFD)
 		err = os.Remove(envPath)
 		if err != nil {

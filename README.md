@@ -12,7 +12,7 @@ A simple CLI tool to manage environment variables for your project.
 
 ## Overview
 Envy is a simple CLI tool to safely store and recover `.env` files for projects. It's written in Go using the `cobra` cli tool and `lipgloss` for styling.
-Envy uses an AES encryption to store your environment variables in a `.pack` file which you can unpack as you like. Envy also removes the .env file from the given folder once it's packed as it's generally not a good practice to push them onto repos.
+Envy uses an AES encryption to store your environment variables in a `.pack` file which you can unpack as you like. Envy also removes the .env file from the given folder and replaces it with a placeholder `.env-dist` file, once it's packed as it's generally not a good practice to push them onto repos.
 
 ## Installation
 

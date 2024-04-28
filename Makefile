@@ -6,20 +6,9 @@ build:
 	@GOARCH=amd64 GOOS=linux go build -o ./target/${BINARY}-linux-amd64 .
 	@GOARCH=amd64 GOOS=windows go build -o ./target/${BINARY}-windows-amd64 .
 
-
-build-local:
-	@go build .
-
-run-local: build-local
-	@./envy
-
 run: build
 	@./target/${BINARY}-linux-amd64
-
 
 clean:
 	rm -r ./target/*
 
-
-clean-local:
-	@rm ./envy

@@ -1,20 +1,14 @@
 package vault
 
-import (
-	"log"
-	"os"
+const (
+	secretsFileName string = "envy.secret"
 )
 
-func NewVault(path string) {
-	err := os.MkdirAll(path, os.ModePerm)
-	if err != nil {
-		log.Fatalf("Couldn't create directory: %s\n", err.Error())
-	}
+func NewVault(root string) {
+	createSecretAndPacks(root)
+	vaultSecret := createSecret()
+	writeSecret(root, vaultSecret)
 }
 
 func Pack(filePath string) {
-	bytes, err := os.ReadFile(filePath)
-	if err != nil {
-		log.Fatalf("Couldn't read given env file: %s\n", err.Error())
-	}
 }

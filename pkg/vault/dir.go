@@ -38,3 +38,13 @@ func writeSecret(root string, secret string) {
 
 	fD.WriteString(secret)
 }
+
+func GetProjectName() string {
+	pwd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Cannot stat: %s\n", err.Error())
+	}
+	absPath := filepath.Dir(pwd)
+	dir := filepath.Base(absPath)
+	return dir
+}

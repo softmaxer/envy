@@ -1,10 +1,12 @@
 package cmd
 
 import (
-	"fmt"
 	"log"
+	"os"
 
 	"github.com/spf13/cobra"
+
+	"github.com/softmaxer/envy/pkg/vault"
 )
 
 var packCmd = &cobra.Command{
@@ -16,13 +18,19 @@ var packCmd = &cobra.Command{
   If none found, it'll quit gracefully.`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("pack called")
-		filePath, err := cmd.Flags().GetString("file")
+		envPath, err := cmd.Flags().GetString("file")
+		var projectName string = vault.GetProjectName()
 		if err != nil {
 			log.Printf("Error: %s\n", err.Error())
 		}
-		fmt.Printf("Found file path: %s\n", filePath)
-		fmt.Println(args)
+		if len(args) > 0 {
+			projectName = args[0]
+		}
+		envFD, err := os.Open(envPath)
+		if err != nil {
+			log.Fatalf("Error opening env: %s\n", err.Error())
+		}
+		vault.Pack(projectName, envFD)
 	},
 }
 

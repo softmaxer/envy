@@ -1,14 +1,15 @@
 package vault
 
 import (
-	"strings"
-
-	"github.com/google/uuid"
+	"crypto/rand"
+	"log"
 )
 
 func createSecret() string {
-	var secret strings.Builder
-	secret.WriteString("envy_")
-	secret.WriteString(uuid.New().String())
-	return secret.String()
+	key := make([]byte, 32)
+	_, err := rand.Read(key)
+	if err != nil {
+		log.Fatalf("Error reading into key bytes: %s\n", err.Error())
+	}
+	return string(key)
 }

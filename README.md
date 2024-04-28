@@ -4,7 +4,7 @@
 
 # Envy
 A simple CLI tool to manage environment variables for your project.
-<img src="./assets/demo.gif" alt="Made with VHS">
+<img src="./assets/envy-demo.gif" alt="Made with VHS">
 
    <a href="https://vhs.charm.sh">
     <img src="https://stuff.charm.sh/vhs/badge.svg">

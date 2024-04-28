@@ -3,7 +3,7 @@
 </p>
 
 # Envy
-A simple CLI tool to manage environment variables for your project.
+A simple CLI tool to manage environment variables for your project and prevent you from pushing .env files into production by accident.
 <img src="./assets/demo-gif.gif" alt="Made with VHS">
 
    <a href="https://vhs.charm.sh">

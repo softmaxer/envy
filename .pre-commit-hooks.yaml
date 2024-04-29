@@ -2,10 +2,10 @@
   name: envy
   description: "Envy: A CLI tool to manage your env files."
   entry: envy new
-  language: go
+  language: golang
 
 - id: envy-pack
   name: envy-pack
   description: "Envy pack: encrypt your env files into an AES encrypted vault"
   entry: envy pack
-  language: go
+  language: golang

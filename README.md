@@ -75,4 +75,4 @@ repos:
     -   id: envy-pack
 ```
 
-**NOTE**: This will make your pre-commit hook fail as it will modify the `.env` file if not added to your `.gitignore`. This is merely to ensure you don't accidentally push an .env. This is expected behaviour as envy's principal behavior is a reminder to add it to your gitignore and then additionally to give you a `.env-dist` placeholder.
+**NOTE**: This will make your pre-commit hook fail if you have the .env file tracked by git. This is expected behavior. However, the program itself will succeeded of it finds an env i.e., it will still hash your env into a vault and replace it with an env-dist

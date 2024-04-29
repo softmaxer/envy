@@ -65,20 +65,14 @@ go install github.com/softmaxer/envy
   ```
 
 ### As a precommit hook
-Download the `envy-hook.sh` file using curl and change it to an executable
-```sh
-curl -fsSL https://raw.githubusercontent.com/softmaxer/envy/main/envy-hook.sh > envy-hook.sh
-chmod +x envy-hook.sh
+Copy the following snippet into your `.pre-commit-config.yaml`
+```yaml
+repos:
+-   repo: https://github.com/softmaxer/envy
+    rev: v0.1.11
+    hooks:
+    -   id: envy-new
+    -   id: envy-pack
 ```
-Then add the following to your `.pre-commit-config.yaml`:
 
-```yml
--repo: local
- hooks:
-    -id: envy-precommit-hook
-    -name: envy-precommit-hook
-    entry: envy-hook.sh
-    language: script
-    pass_filenames: false
-```
-You're all set!
+**NOTE**: This will make your pre-commit hook fail as it will modify the `.env` file if not added to your `.gitignore`. This is merely to ensure you don't accidentally push an .env. This is expected behaviour as envy's principal behavior is a reminder to add it to your gitignore and then additionally to give you a `.env-dist` placeholder.

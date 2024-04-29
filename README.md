@@ -38,6 +38,7 @@ go install github.com/softmaxer/envy
 
 
 ## Usage
+### As a Binary
 - Start a new envy vault by typing
   ```sh
   envy new
@@ -62,3 +63,22 @@ go install github.com/softmaxer/envy
   ```sh
   envy unpack <project-name>
   ```
+
+### As a precommit hook
+Download the `envy-hook.sh` file using curl and change it to an executable
+```sh
+curl -fsSL https://raw.githubusercontent.com/softmaxer/envy/main/envy-hook.sh > envy-hook.sh
+chmod +x envy-hook.sh
+```
+Then add the following to your `.pre-commit-config.yaml`:
+
+```yml
+-repo: local
+ hooks:
+    -id: envy-precommit-hook
+    -name: envy-precommit-hook
+    entry: envy-hook.sh
+    language: script
+    pass_filenames: false
+```
+You're all set!

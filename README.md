@@ -75,4 +75,4 @@ repos:
     -   id: envy-pack
 ```
 
-**NOTE**: This will make your pre-commit hook fail if you have the .env file tracked by git. This is expected behavior. However, the program itself will succeeded of it finds an env i.e., it will still hash your env into a vault and replace it with an env-dist
+**NOTE**: This will make your pre-commit hook fail if you have the .env file tracked by git. This is expected behavior. However, the program itself will succeed if it finds an env i.e., it will still hash your env into a vault and replace it with an env-dist

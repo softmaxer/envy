@@ -13,3 +13,9 @@ func SuccessText() lipgloss.Style {
 		Foreground(lipgloss.Color("#ffffff")).
 		Background(lipgloss.Color("#35572e"))
 }
+
+func ListItem() lipgloss.Style {
+	return lipgloss.NewStyle().
+		BorderStyle(lipgloss.NormalBorder()).
+		BorderForeground(lipgloss.Color("63"))
+}

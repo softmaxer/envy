@@ -69,7 +69,7 @@ Copy the following snippet into your `.pre-commit-config.yaml`
 ```yaml
 repos:
 -   repo: https://github.com/softmaxer/envy
-    rev: v0.1.12
+    rev: v0.2.12
     hooks:
     -   id: envy-new
     -   id: envy-pack
